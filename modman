@@ -1,0 +1,4 @@
+src/app/code/local/Getsquare/Reserve                                     app/code/local/Getsquare/Reserve
+src/app/design/frontend/default/default/template/getsquare               app/design/frontend/default/default/template/getsquare
+src/app/design/frontend/default/default/layout/getsquare_reserve.xml     app/design/frontend/default/default/layout/getsquare_reserve.xml
+src/app/etc/modules/*                                                    app/etc/modules/
