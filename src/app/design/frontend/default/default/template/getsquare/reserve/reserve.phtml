@@ -1,13 +1,13 @@
 <?php
-if(isset($_POST['sku'])){
+if (isset($_POST['sku'])) {
     $sku = $_POST['sku'];
-}else{
+} else {
     $sku = '';
 }
 if (isset($_POST['product_name'])) {
-	$productName = $_POST['product_name'];
-}else{
-	$product_name = '';
+    $productName = $_POST['product_name'];
+} else {
+    $product_name = '';
 }
 $customer = Mage::helper('customer');
 
@@ -17,70 +17,96 @@ $firstname = '';
 $surname = '';
 $email = '';
 
-if($customer->isLoggedIn()){
+if ($customer->isLoggedIn()) {
 
     $currentCustomer = $customer->getCurrentCustomer();
-    $customerName = $currentCustomer->getName();
-    $firstname = $currentCustomer->getFirstname();
-    $surname = $currentCustomer->getLastname();
-    $email = $currentCustomer->getEmail();
+    $customerName    = $currentCustomer->getName();
+    $firstname       = $currentCustomer->getFirstname();
+    $surname         = $currentCustomer->getLastname();
+    $email           = $currentCustomer->getEmail();
 }
 ?>
 
-<section class="row">
-	<div class="columns">
-		<h1><?php echo $this->__('Reserve Item in Store'); ?></h1>
-	</div>
-</section>
+
+<div class="page-title">
+    <h2><?php echo $this->__('Reserve Item in Store'); ?></h2>
+</div>
 <div class="simple_contact_form">
-	<form name="simple_contact_form" action="<?php echo $this->getUrl('reserve') ?>index/success"
-		  method="post" id="reserve-form">
-		<ul class="no-bullet">
-			<li>
-				<div class="fields">
-					<label for="first-name"><?php echo $this->__('First Name:'); ?><span class="required">*</span></label>
-					<input value="<?php if($customer->isLoggedIn()){ echo $firstname; } ?>" name="first-name" id="first-name" title="First Name" placeholder="First Name" type="text" class="input-text required-entry">
-				</div>
-				<div class="fields">
-					<label for="surname"><?php echo $this->__('Surname:'); ?><span class="required">*</span></label>
-					<input value="<?php if($customer->isLoggedIn()){ echo $surname; } ?>" name="surname" id="surname" title="Surname" placeholder="Surname"
-						   type="text" class="input-text required-entry">
-				</div>
-			</li>
-			<li>
-				<div class="fields">
-					<label for="email"><?php echo $this->__('Contact Email:'); ?><span class="required">*</span></label>
-					<input value="<?php if($customer->isLoggedIn()){ echo $email; } ?>" name="email" id="email" title="Contact Email" placeholder="Email" type="text" class="input-text required-entry">
-				</div>
-				<div class="fields">
-					<label for="phone"><?php echo $this->__('Phone Number:'); ?><span class="required">*</span></label>
-					<input name="phone" id="phone" title="Phone" placeholder="Phone Number" type="text" class="input-text required-entry">
-				</div>
-				<div class="fields">
-					<label for="product_name"><?php echo $this->__('Product Name:') ?></label>
-					<input name="product_name" id="product_name" title="Product Name"
-						   value="<?php if (isset($productName)): echo($productName); endif; ?>" type="text">
-				</div>
-                <div class="fields">
-                    <input name="product_sku" id="product_sku" title="Product SKU"
-                           value="<?php if (isset($sku)): echo($sku); endif; ?>" type="hidden">
-                </div>
-			</li>
-			<li class="cb">
-				<label for="comment"><?php echo $this->__('Your Comments:'); ?></label>
-				<textarea name="comment" id="comment" title="Comment" style="height:100px;" cols="50"
-						  rows="3"><?php echo $this->__('Please let us know any additional comments.'); ?></textarea>
-			</li>
-		</ul>
-		<div>
-			<p><?php echo $this->__('* Required Fields'); ?></p>
-			<button type="submit" class="button" style="width: 300px; float: right;"><span><?php echo $this->__('Submit'); ?></span></button>
-			<div class="cb"></div>
-		</div>
-	</form>
-	<script type="text/javascript">
-		//< ![CDATA[
-		var customForm = new VarienForm('reserve-form');
-		//]]>
-	</script>
+    <form name="simple_contact_form" action="<?php echo $this->getUrl('reserve') ?>index/success"
+          method="post" id="reserve-form">
+        <div class="fieldset">
+            <h2 class="legend"><?php echo Mage::helper('contacts')->__('Your Reseervation Details') ?></h2>
+            <ul class="form-list">
+                <li class="fields">
+                    <div class="field">
+                        <label for="first-name"><?php echo $this->__('First Name:'); ?><span
+                                class="required">*</span></label>
+                        <input value="<?php if ($customer->isLoggedIn()) {
+                            echo $firstname;
+                        } ?>" name="first-name" id="first-name" title="First Name" placeholder="First Name" type="text"
+                               class="input-text required-entry">
+                    </div>
+
+                    <div class="field">
+                        <label for="surname"><?php echo $this->__('Surname:'); ?><span class="required">*</span></label>
+                        <input value="<?php if ($customer->isLoggedIn()) {
+                            echo $surname;
+                        } ?>" name="surname" id="surname" title="Surname" placeholder="Surname"
+                               type="text" class="input-text required-entry">
+                    </div>
+                </li>
+                <li class="fields">
+                    <div class="field">
+                        <label for="email"><?php echo $this->__('Contact Email:'); ?><span
+                                class="required">*</span></label>
+                        <input value="<?php if ($customer->isLoggedIn()) {
+                            echo $email;
+                        } ?>" name="email" id="email" title="Contact Email" placeholder="Email" type="text"
+                               class="input-text required-entry">
+                    </div>
+                    <div class="field">
+                        <label for="phone"><?php echo $this->__('Phone Number:'); ?><span
+                                class="required">*</span></label>
+                        <input name="phone" id="phone" title="Phone" placeholder="Phone Number" type="text"
+                               class="input-text required-entry">
+                    </div>
+                </li>
+                <li class="fields">
+                    <div class="field">
+                        <label for="product_name"><?php echo $this->__('Product Name:') ?><span
+                                class="required">*</span></label>
+                        <input name="product_name" id="product_name" title="Product Name" class="input-text"
+                               value="<?php if (isset($productName)): echo($productName); endif; ?>" type="text">
+                    </div>
+                    <div class="field">
+
+                        <input name="product_sku" id="product_sku" title="Product SKU" class="input-text"
+                               value="<?php if (isset($sku)): echo($sku); endif; ?>" type="hidden">
+                    </div>
+                </li>
+                <li class="wide">
+                    <label for="comment"><?php echo $this->__('Your Comments:'); ?></label>
+
+                    <div class="input-box">
+                        <textarea name="comment" id="comment" title="Comment" style="height:100px;" cols="50"
+                                  rows="3"><?php echo $this->__(
+                                'Please let us know any additional comments.'
+                            ); ?></textarea>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <p><?php echo $this->__('* Required Fields'); ?></p>
+            <button type="submit" class="button btn" style="width: 300px; float: right;"><span><?php echo $this->__(
+                        'Submit'
+                    ); ?></span></button>
+            <div class="cb"></div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        //< ![CDATA[
+        var customForm = new VarienForm('reserve-form');
+        //]]>
+    </script>
 </div>

@@ -6,40 +6,40 @@ $storePhone = Mage::getStoreConfig('general/store_information/phone');
 $storeAddress = Mage::getStoreConfig('general/store_information/address');
 ?>
 <div class="checkout-onepage-index">
-    <section class="row">
+    <div class="page-title">
+        <h2><?php echo $this->__('%s, you have successfully reserved the item below.', $customerFirstname); ?></h2>
+    </div>
+    <div class="checkout-section row" id="checkout-success">
         <div class="columns">
-            <h1><?php echo $this->__('%s, you have successfully reserved the item below.', $customerFirstname); ?></h1>
+            <h2><?php echo $this->__('Reserved Item: %s.', $productName); ?></h2>
+
+            <h3><?php echo $this->__('Thank you for your reservation'); ?></h3>
+
+            <?php if (isset($storeName)): ?>
+                <p>
+                    <?php echo $this->__(
+                        'You will receive an email with details of your reseravtion, please visit %s in store within 7 days to view your reserved item.',
+                        $storeName
+                    ); ?>
+                </p>
+            <?php else: ?>
+                <p>
+                    <?php echo $this->__(
+                        'You will receive an email with details of your reseravtion, please visit us in store within 7 days to view your reserved item.'
+                    ); ?>
+                </p>
+            <?php endif; ?>
+
+            <?php if (isset($storeAddress)): ?>
+                <p><?php echo nl2br($storeAddress); ?></p>
+            <?php endif; ?>
         </div>
-    </section>
-    <div class="row">
-        <section class="columns main checkout-item">
-            <div class="checkout-section row" id="checkout-success">
-                <div class="columns">
-                    <h2><?php echo $this->__('Reserved Item: %s.', $productName); ?></h2>
+        <hr/>
 
-                    <h3><?php echo $this->__('Thank you for your reservation'); ?></h3>
-
-                    <?php if(isset($storeName)): ?>
-                        <p>
-                            <?php echo $this->__('You will receive an email with details of your reseravtion, please visit %s in store within 7 days to view your reserved item.', $storeName); ?>
-                        </p>
-                    <?php else: ?>
-                        <p>
-                            <?php echo $this->__('You will receive an email with details of your reseravtion, please visit us in store within 7 days to view your reserved item.'); ?>
-                        </p>
-                    <?php endif; ?>
-
-                    <?php if (isset($storeAddress)): ?>
-                        <p><?php echo nl2br($storeAddress); ?></p>
-                    <?php endif; ?>
-                </div>
-                <div class="columns">
-                    <a href="<?php echo $this->getUrl('') ?>" class="button">
-                        <?php echo $this->__('Continue Shopping'); ?>
-                    </a>
-                </div>
-            </div>
-            <hr/>
-        </section>
+        <div class="columns">
+            <button onclick="location.href='<?php echo $this->getUrl('') ?>'" class="button btn">
+                <span><span><?php echo $this->__('Continue Shopping'); ?></span></span>
+            </button>
+        </div>
     </div>
 </div>

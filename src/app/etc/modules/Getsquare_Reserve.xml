@@ -3,8 +3,7 @@
     <modules>
         <Getsquare_Reserve>
             <active>true</active>
-            <codePool>local</codePool>
-            <depends></depends>
+            <codePool>community</codePool>
         </Getsquare_Reserve>
     </modules>
 </config>
