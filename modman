@@ -1,5 +1,5 @@
-src/app/code/community/Getsquare/Reserve/*                                 app/code/community/Getsquare/Reserve
-src/app/design/frontend/default/default/template/getsquare/*               app/design/frontend/default/default/template/getsquare
-src/app/design/frontend/default/default/layout/getsquare_reserve.xml       app/design/frontend/default/default/layout/getsquare_reserve.xml
-src/app/design/frontend/adminhtml/default/layout/getsquare_reserve.xml     app/design/adminhtml/default/default/layout/getsquare_reserve.xml
-src/app/etc/modules/*                                                      app/etc/modules/
+src/app/code/community/Getsquare/Reserve/*								app/code/community/Getsquare/Reserve
+src/app/design/frontend/default/default/template/getsquare/*			app/design/frontend/default/default/template/getsquare
+src/app/design/frontend/default/default/layout/getsquare_reserve.xml	app/design/frontend/default/default/layout/getsquare_reserve.xml
+src/app/design/adminhtml/default/default/layout/getsquare_reserve.xml	app/design/adminhtml/default/default/layout/getsquare_reserve.xml
+src/app/etc/modules/*													app/etc/modules/
